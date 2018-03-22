@@ -216,7 +216,7 @@ class Game extends React.Component {
   }
 
   render() {
-    let peep = this.state.peep ? ' peep' : '';
+    let peep = this.state.peep ? 'peep' : '';
     let controls = ['Very Easy', 'Easy', 'Medium', 'Tough', 'Very Tough'].map((level, index) => {
       let active = level === this.state.level ? ' active' : '';
       return <li key={index} className={"level" + active} onClick={() => this.generate(level)}>{level}</li>;

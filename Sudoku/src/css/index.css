@@ -9,6 +9,7 @@ body {
 }
 
 .logo {
+    /*background: url(../images/logo.png);*/
     position: absolute;
     top: 20%;
     left: 8%;
