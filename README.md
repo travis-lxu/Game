@@ -13,6 +13,7 @@ Usage
 git clone https://github.com/GXwar/Game
 cd Game && cd Sudoku
 npm install 
-npm start
+npm run build 
+npm run start
 ```
 
