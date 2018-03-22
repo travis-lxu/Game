@@ -269,11 +269,11 @@ class Game extends Component {
   }
   handleNumsClick(i) {
     if (this.state.peep) { return }
-    var chosen = this.state.chosen
+    let chosen = this.state.chosen;
     if (!chosen) {
       this.filter('' + i)
     } else {
-      var values = this.state.values.slice()
+      let values = this.state.values.slice();
       if (this.state.origin.has([chosen[0]][chosen[1]])) {
         this.setState({
           chosen: null,
