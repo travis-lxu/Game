@@ -6,7 +6,7 @@ const config = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname)
+    path: path.join(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -20,7 +20,15 @@ const config = {
         exclude: [
           path.join(__dirname, './node_modules')
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader'
+      },
     ]
   }
 };

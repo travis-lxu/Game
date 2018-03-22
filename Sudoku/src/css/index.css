@@ -1,0 +1,351 @@
+body {
+    margin: 0;
+    padding: 2em 0 0;
+    min-width: 375px;
+    overflow: auto;
+    font: 12px 'Microsoft YaHei', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    background: url(../images/board.jpg) repeat;
+    user-select: none
+}
+
+.logo {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    width: 20%;
+    height:9vw;
+    transform: rotate(-15deg);
+    opacity:0.4;
+}
+.main {
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 375px;
+    height: 36vw;
+    min-height: 270px;
+}
+/*board*/
+.board {
+    position: absolute;
+    left: 14%;
+    margin: 0 auto;
+    display: inline-block;
+    width: 72%;
+    height: 100%;
+}
+.row {
+    border-bottom: 1px dashed rgba(197,229,218,0.55);
+    margin-bottom: -1px;
+    width: 100%;
+    height: 11.11111%
+}
+.row:nth-child(3n) {
+    border-bottom: 2px solid rgba(251, 255, 254, 0.8);
+    margin-bottom: -2px
+}
+.row:nth-child(1) {
+    border-top: 2px solid rgba(251, 255, 254, 0.8);
+}
+button {
+    padding: 0
+}
+button:focus {
+    outline: none;
+}
+.square{
+    width: 11.11111%;
+    height: 100%;
+    float: left;
+    background: rgba(0, 0, 0, 0);
+    font-size: 2em;
+    color: #4285f4;
+    padding: 0;
+    border-width:0 1px 0 0;
+    border-style: dashed;
+    border-color: rgba(197,229,218,0.55);
+    cursor: pointer;
+}
+.square:nth-child(3n) {
+    border-right: 2px solid rgba(251, 255, 254, 0.8);
+}
+.square:nth-child(1) {
+    border-left: 2px solid rgba(251, 255, 254, 0.8);
+}
+.highlight {
+    background-color: rgba(52, 168, 83, 0.2);
+    animation: highlight 2s
+}
+.filter {
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 13, 126, 0.2);
+    color: #4285f4
+}
+.chosen {
+    background-color: rgba(155, 204, 20, 0.3)
+}
+.origin {
+    background-color: rgba(200, 200, 200, 0.1);
+    color: #ea4335
+}
+.origin.highlight {
+    background-color: rgba(52, 168, 83, 0.2);
+    color: #ea4335
+}
+.origin.filter {
+    background-color: rgba(255, 13, 126, 0.2);
+    color: #ea4335
+}
+.conflict {
+    background-color: rgba(255, 0, 0, 0.1);
+    font-weight: 800
+}
+.origin.conflict {
+    background-color: rgba(255, 0, 0, 0.3);
+    color: #ea4335
+}
+.chosen.conflict {
+    background-color: rgba(255, 0, 0, 0.6);
+    font-weight: 800
+}
+/*choices*/
+.choices {
+    position: relative;
+    margin: 0 auto;
+    width: 36%;
+    min-width: 270px;
+    height: 4vw;
+    min-height: 30px;
+    margin-top: 4px;
+    padding: 0;
+}
+.choice{
+    width: 11.111%;
+    height: 100%;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 1.5em;
+    color: rgb(155, 204, 20);
+    border: 1px dashed rgba(251, 255, 254, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/*level control*/
+.controls {
+    height: 2em;
+    margin: 0 0 2em;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    line-height: 2em;
+}
+.level {
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.level.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ea4335
+}
+/*both side*/
+.left, .right {
+    position: absolute;
+    width: 14%;
+    height: 100%;
+}
+.right {
+    left: 86%;
+}
+.check, .solve, .hint, .delete {
+    position: absolute;
+    border: 0;
+    /*border: 1px dotted #FFF;*/
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    color: #cdd1d0;
+    cursor: pointer;
+}
+.check, .hint {
+    bottom: 0;
+    width: 100%;
+    height: 19.44%;
+    font-size: 2em;
+    transition: background-color 0.5s
+}
+.check::before {
+    content: '\1f4a1';
+    opacity: 0.7;
+    font-size: 2em
+}
+.hint::before {
+    content: '\1f441';
+    opacity: 0.7;
+    font-size: 2em;
+}
+.hint.two{
+    background-color: rgba(52, 168, 83, 0.2)
+}
+.hint.one{
+    background-color: rgba(251, 188, 5, 0.2)
+}
+.hint.zero {
+    background-color: rgba(255, 13, 126, 0.2)
+}
+.checktext {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: 6em;
+    margin: 0;
+    text-align: center;
+    word-break:break-all;
+    font-size: 2em;
+    color: #fbbc05;
+    filter: blur(12px)
+}
+.checktext.checking {
+    filter: blur(0)
+}
+.solve, .delete {
+    width: 50%;
+    height: 9.72%;
+    bottom: 18.61%;
+    background: rgba(0, 0, 0, 0.3)
+}
+.solve {
+    left: 0;
+}
+.solve::before {
+    content: '\2691';
+    opacity: 0.7;
+    font-size: 1.5em;
+}
+.solve.peep {
+    background-color: rgba(251, 188, 5, 0.2)
+}
+
+.delete {
+    right: 0;
+}
+.delete::before {
+    content: '\2702';
+    opacity: 0.7;
+    font-size: 1.5em
+}
+
+/*info block*/
+@keyframes fadein {
+    0% {opacity: 0; transform: translateY(-5em)}
+    100% {opacity: 100; transform: translateY(-5em)}
+}
+.about {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.showabout {
+    width: 30px;
+    height: 30px;
+    margin: 10px auto 0;
+    background: url(../images/info.png);
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+.showabout:hover + .aboutme {
+    animation: fadein 0.3s;
+    display: block;
+}
+.aboutme {
+    position: fixed;
+    top: 8%;
+    left: 32%;
+    width: 32%;
+    min-width: 300px;
+    background: #FFF;
+    padding: 2%;
+    display: none
+}
+.aboutlogo {
+    width: 15%;
+    margin: 0 auto
+}
+.code {
+    width: 30px;
+    height: 30px;
+    background: url(../images/code.png);
+    background-size: 100% 100%;
+    cursor: pointer;
+    margin: 20px 0;
+    display: block;
+}
+/*for phone or some screen*/
+@media screen and (max-aspect-ratio: 5/3) {
+    .main {
+        width: 70%;
+        height:50.4vw;
+    }
+    .choices {
+        width: 50.4%;
+        height: 5.6vw;
+    }
+    .logo {
+        left: 3%
+    }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+    .logo {
+        position: relative;
+        left: initial;
+        margin: 0 auto 1em;
+        width: 20%;
+        height: 9vw;
+        display: block;
+        transform: rotate(0deg);
+        opacity:0.4;
+    }
+    .aboutme {
+        width: 46%;
+        left: 25%
+    }
+}
+@media screen and (max-width: 1300px) {
+    .check::before {
+        font-size: 1.5em
+    }
+    .hint::before {
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width: 680px) {
+    .check::before {
+        font-size: 1em
+    }
+    .hint::before {
+        font-size: 1em;
+    }
+    .checktext {
+        font-size: 1em
+    }
+}
+#bt1::after {
+    content: '\1F4A1';
+    font-size: 2em
+}
+#bt2::after {
+    content: '\1F441';
+    font-size: 2em
+}
+#bt3::after {
+    content: '\2702';
+    font-size: 2em
+}
+#bt4::after {
+    content: '\2691';
+    font-size: 2em
+}
