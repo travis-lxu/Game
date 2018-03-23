@@ -1,7 +1,7 @@
 {
-  "name": "Sudoku",
+  "name": "sudoku-solver-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Soduku Game",
   "main": "index.js",
   "scripts": {
     "build": "npm run clear && webpack --config webpack.json.js",
@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "GXwar",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.5.3",
